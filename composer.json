@@ -1,6 +1,9 @@
 {
     "name": "codedge/livewire-companion",
-    "description": "A Laravel with ready-to-use Laravel Livewire components.",
+    "description": "A library with ready-to-use Laravel Livewire components.",
+    "keywords": [
+        "laravel", "livewire", "laravel livewire", "components"
+    ],
     "type": "library",
     "require": {
         "php": "^7.4",
