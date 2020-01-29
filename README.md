@@ -40,6 +40,7 @@ This is going to publish all templates to `resources/views/vendor/livewire-compa
 
 ### Datatables
 
+The datatable component support both, Eloquent collections and Support collections.  
 Create a new file at `app/Http/Livewire/MyTable.php`:
 
 ```php
@@ -57,11 +58,11 @@ class MyTable extends Datatable
 The Livewire component needs to inherit the `Datatable` class. Then make sure you configure the component as you like:  
 
 * `$model`: Specify the model class, _mandatory_
-* `$perPageOptions`: Available options show items per page, __default__: `5, 10, 25`
+* `$perPageOptions`: Available options show items per page, _default_: `5, 10, 25`
 * `$searchingEnabled`: Enable/Disable searching, _default_: `true`
 * `$sortingEnabled`: Enable/Disable sorting, _default_: `true`
 * `$template`: Overwrite Datatable template path, _default_: `vendor.livewire-companion.datatable`
 
 ## Contributing
 
-If you miss any component or want to extend functionality and/or fixing bugs - feel free to submit a PR. I am happily merge it in.
+If you miss any component or want to extend functionality and/or fixing bugs - feel free to submit a PR. I happily merge it in.
