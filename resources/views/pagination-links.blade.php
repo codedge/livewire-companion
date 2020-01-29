@@ -22,7 +22,9 @@
             @if (is_array($element))
                 @foreach ($element as $page => $url)
                     @if ($page == $paginator->currentPage())
-                        <span class="border-t border-b border-l border-brand-light px-3 py-2 bg-brand-light no-underline">{{ $page }}</span>
+                        <span class="border-t border-b border-l border-brand-light px-3 py-2 bg-gray-300 font-semibold no-underline">
+                            {{ $page }}
+                        </span>
                     @else
                         <a wire:click.prevent="gotoPage({{ $page }})"
                            class="border-t border-b border-l border-brand-light px-3 py-2 hover:bg-brand-light text-brand-dark no-underline"
