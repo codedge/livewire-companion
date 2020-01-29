@@ -1,0 +1,37 @@
+{
+    "name": "codedge/livewire-companion",
+    "description": "A Laravel with ready-to-use Laravel Livewire components.",
+    "type": "library",
+    "require": {
+        "php": "^7.4",
+        "livewire/livewire": "^0.7.0",
+        "spatie/laravel-collection-macros": "^6.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Codedge\\LivewireCompanion\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    },
+    "authors": [
+        {
+            "name": "Holger Lösken",
+            "email": "holger.loesken@codedge.de"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Codedge\\LivewireCompanion\\LivewireCompanionServiceProvider"
+            ]
+        }
+    }
+}
