@@ -4,25 +4,25 @@ namespace Codedge\LivewireCompanion\Components;
 
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Datatable extends Component
 {
-    public $perPage = 10;
+    use WithPagination;
+
+    public int $perPage = 10;
+    public array $perPageOptions = [ 5, 10, 25 ];
 
     /**
      * @var string
      */
     public $sortField;
-
-    /**
-     * @var bool
-     */
-    public $sortAsc = true;
+    public bool $sortAsc = true;
     protected bool $sortingEnabled = true;
 
     public string $searchTerm = '';
-    protected string $searchField = 'name.common';
-    protected bool $searchingEnabled = true;
+    protected string $searchField = '';
+    public bool $searchingEnabled = true;
 
     protected string $template = 'vendor.livewire-companion.datatable';
 
@@ -41,9 +41,14 @@ class Datatable extends Component
     public function render()
     {
         $this->loadModel();
+
+        if(!in_array($this->perPage, $this->perPageOptions)) {
+            throw new \Exception('Per page option is not within the available values.');
+        }
+
         $items = $this->items->paginate($this->perPage);
 
-        return view($this->getTemplate(), compact('items'));
+        return view($this->template, compact('items'));
     }
 
     private function loadModel(): void
@@ -62,7 +67,7 @@ class Datatable extends Component
         $sortDirectionMethod = $this->sortAsc ? 'sortBy' : 'sortByDesc';
         $collection = $instance->all();
 
-        if(!empty($this->searchTerm)) {
+        if($this->canSearch()) {
             $collection = $collection->where($this->searchField, $this->searchTerm);
         }
 
@@ -73,9 +78,17 @@ class Datatable extends Component
     {
         $instance = new $this->model;
 
-        return $instance->where($this->searchField, 'like', '%'.$this->searchTerm.'%')
-                        ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+        if($this->canSearch()) {
+            $instance = $instance->where($this->searchField, 'like', '%'.$this->searchTerm.'%');
+        }
+
+        return $instance->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                         ->all();
+    }
+
+    private function canSearch(): bool
+    {
+        return $this->searchingEnabled && !empty($this->searchTerm) && !empty($this->searchField);
     }
 
     public function sortBy(string $field): void
@@ -87,20 +100,5 @@ class Datatable extends Component
         }
 
         $this->sortField = $field;
-    }
-
-    protected function sortingEnabled(): bool
-    {
-        return $this->sortingEnabled ?? config('livewire-companion.sortingEnabled');
-    }
-
-    protected function searchingEnabled(): bool
-    {
-        return $this->searchingEnabled ?? config('livewire-companion.searchingEnabled');
-    }
-
-    private function getTemplate(): string
-    {
-        return $this->template;
     }
 }

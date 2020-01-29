@@ -1,7 +1,18 @@
 <div>
-    <div class="flex justify-end mb-10">
-        <input wire:model="searchTerm" class="shadow appearance-none border rounded w-1/3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-               id="username" type="text" placeholder="Search...">
+    <div class="flex">
+        <div class="w-1/2">
+            <select wire:model="perPage" class="shadow border rounded py-2 px-3">
+                @foreach($perPageOptions as $option)
+                    <option value="{{ $option }}">{{ $option }}</option>
+                @endforeach
+            </select>
+        </div>
+        @if($searchingEnabled)
+            <div class="w-1/2 text-right mb-10">
+                <input wire:model="searchTerm" class="shadow appearance-none border rounded w-1/3 py-2 px-3 text-gray-800"
+                       type="text" placeholder="Search...">
+            </div>
+        @endif
     </div>
     <table class="table-auto w-full">
         <thead>
