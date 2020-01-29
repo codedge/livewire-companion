@@ -15,19 +15,25 @@
         @endif
     </div>
     <table class="table-auto w-full">
-        <thead>
+        <thead class="bg-gray-200">
         <tr>
             <th class="px-4 py-2">
                 <a wire:click.prevent="sortBy('name')" role="button" href="#">Name</a>
-                @include('vendor/livewire-companion/_sort-icon', ['field' => 'name'])
+                @if($sortingEnabled)
+                    @include('vendor/livewire-companion/_sort-icon', ['field' => 'name'])
+                @endif
             </th>
             <th class="px-4 py-2">
                 <a wire:click.prevent="sortBy('cca2')" role="button" href="#">Country Code</a>
-                @include('vendor/livewire-companion/_sort-icon', ['field' => 'cca2'])
+                @if($sortingEnabled)
+                    @include('vendor/livewire-companion/_sort-icon', ['field' => 'name'])
+                @endif
             </th>
             <th class="px-4 py-2">
                 <a wire:click.prevent="sortBy('area')" role="button" href="#">Area</a>
-                @include('vendor/livewire-companion/_sort-icon', ['field' => 'area'])
+                @if($sortingEnabled)
+                    @include('vendor/livewire-companion/_sort-icon', ['field' => 'name'])
+                @endif
             </th>
         </tr>
         </thead>

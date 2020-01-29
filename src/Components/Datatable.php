@@ -18,7 +18,7 @@ class Datatable extends Component
      */
     public $sortField;
     public bool $sortAsc = true;
-    protected bool $sortingEnabled = true;
+    public bool $sortingEnabled = true;
 
     public string $searchTerm = '';
     protected string $searchField = '';
@@ -100,5 +100,10 @@ class Datatable extends Component
         }
 
         $this->sortField = $field;
+    }
+
+    public function paginationView()
+    {
+        return 'livewire-companion::pagination-links';
     }
 }
