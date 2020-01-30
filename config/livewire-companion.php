@@ -1,12 +1,14 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 return [
     'datatable' => [
-        'sortingEnabled' => true,
+        'sortingEnabled'   => true,
         'searchingEnabled' => true,
     ],
 
     'map' => [
-        
+
     ],
 ];
