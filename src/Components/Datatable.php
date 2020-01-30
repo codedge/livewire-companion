@@ -105,4 +105,12 @@ class Datatable extends Component
     {
         return 'livewire-companion::pagination-links';
     }
+
+    public function updating($name, $value)
+    {
+        // Reset page to 1 when doing a search
+        if($name === 'searchTerm') {
+            $this->paginator['page'] = 1;
+        }
+    }
 }
