@@ -1,6 +1,7 @@
 [![Latest Stable Version](https://poser.pugx.org/codedge/livewire-companion/v/stable)](https://packagist.org/packages/codedge/livewire-companion)
 [![License](https://poser.pugx.org/codedge/livewire-companion/license)](https://packagist.org/packages/codedge/livewire-companion)
 [![Total Downloads](https://poser.pugx.org/codedge/livewire-companion/downloads)](https://packagist.org/packages/codedge/livewire-companion)
+[![StyleCI](https://github.styleci.io/repos/236844417/shield?branch=master)](https://github.styleci.io/repos/236844417)
 
 # Livewire Companion 
 
