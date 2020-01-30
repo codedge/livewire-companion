@@ -2,6 +2,7 @@
 
 namespace Codedge\LivewireCompanion\Components;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -55,14 +56,18 @@ class Datatable extends Component
     {
         $instance = new $this->model;
 
-        if(!($instance instanceof \Illuminate\Database\Eloquent\Collection)) {
-            $this->items = $this->loadSupportCollection($instance);
+        if($this->canSearch()) {
+            $instance = $instance::where($this->searchField, 'LIKE', '%'.$this->searchTerm.'%');
+        }
+
+        if($instance instanceof Builder) {
+            $this->items = $this->handleBuilder($instance);
         } else {
-            $this->items = $this->loadEloquentCollection($instance);
+            $this->items = $this->handleCollection($instance);
         }
     }
 
-    private function loadSupportCollection($instance)
+    private function handleCollection($instance)
     {
         $sortDirectionMethod = $this->sortAsc ? 'sortBy' : 'sortByDesc';
         $collection = $instance->all();
@@ -74,16 +79,10 @@ class Datatable extends Component
         return collect($collection->$sortDirectionMethod($this->sortField)->all());
     }
 
-    private function loadEloquentCollection($instance)
+    private function handleBuilder(Builder $instance)
     {
-        $instance = new $this->model;
-
-        if($this->canSearch()) {
-            $instance = $instance->where($this->searchField, 'like', '%'.$this->searchTerm.'%');
-        }
-
         return $instance->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
-                        ->all();
+                        ->get();
     }
 
     private function canSearch(): bool
