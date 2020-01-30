@@ -1,9 +1,9 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Codedge\LivewireCompanion;
 
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
 
 final class LivewireCompanionServiceProvider extends ServiceProvider
