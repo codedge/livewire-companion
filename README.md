@@ -1,6 +1,10 @@
+[![Latest Stable Version](https://poser.pugx.org/codedge/livewire-companion/v/stable)](https://packagist.org/packages/codedge/livewire-companion)
+[![License](https://poser.pugx.org/codedge/livewire-companion/license)](https://packagist.org/packages/codedge/livewire-companion)
+[![Total Downloads](https://poser.pugx.org/codedge/livewire-companion/downloads)](https://packagist.org/packages/codedge/livewire-companion)
+
 # Livewire Companion 
 
-_Livewire Companion_ is a set of components based on [Laravel Livewire](https://laravel-livewire.com/), to get you quickly
+[_Livewire Companion_](https://www.livewire-companion.tech) is a set of components based on [Laravel Livewire](https://laravel-livewire.com/), to get you quickly
 up and running for recurring tasks.
 
 ## Included components
@@ -40,7 +44,9 @@ This is going to publish all templates to `resources/views/vendor/livewire-compa
 
 ### Datatables
 
-The datatable component support both, Eloquent collections and Support collections.  
+The datatable component support both, [Eloquent collections](https://laravel.com/docs/5.8/eloquent-collections)
+and [Support collections](https://laravel.com/docs/5.8/collections).  
+
 Create a new file at `app/Http/Livewire/MyTable.php`:
 
 ```php
